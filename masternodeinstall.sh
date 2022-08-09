@@ -1,9 +1,9 @@
 #!/bin/bash
 
-PORT=7429
-RPCPORT=7430
-CONF_DIR=~/.altecoin
-COINZIP='https://github.com/altecoin-altc/altecoin/releases/download/v1.2/altecoin-linux.zip'
+PORT=41010
+RPCPORT=41011
+CONF_DIR=~/.edelweis
+COINZIP='https://github.com/edelweiscoin/EDEL/releases/download/v1.0/edelweis-linux.zip'
 
 cd ~
 RED='\033[0;31m'
@@ -16,16 +16,16 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 function configure_systemd {
-  cat << EOF > /etc/systemd/system/altecoin.service
+  cat << EOF > /etc/systemd/system/edelweis.service
 [Unit]
-Description=ALtecoin Service
+Description=Edelweis Service
 After=network.target
 [Service]
 User=root
 Group=root
 Type=forking
-ExecStart=/usr/local/bin/altecoind
-ExecStop=-/usr/local/bin/altecoin-cli stop
+ExecStart=/usr/local/bin/edelweisd
+ExecStop=-/usr/local/bin/edelweis-cli stop
 Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
@@ -37,8 +37,8 @@ WantedBy=multi-user.target
 EOF
   systemctl daemon-reload
   sleep 2
-  systemctl enable altecoin.service
-  systemctl start altecoin.service
+  systemctl enable edelweis.service
+  systemctl start edelweis.service
 }
 
 echo ""
@@ -52,14 +52,14 @@ then
   cd /usr/local/bin/
   wget $COINZIP
   unzip *.zip
-  rm altecoin-qt altecoin-tx altecoin-linux.zip
-  chmod +x altecoin*
+  rm edelweis-qt edelweis-tx edelweis-linux.zip
+  chmod +x edelweis*
   
   mkdir -p $CONF_DIR
   cd $CONF_DIR
-  wget http://cdn.delion.xyz/altc.zip
-  unzip altc.zip
-  rm altc.zip
+  wget http://cdn.delion.xyz/edel.zip
+  unzip edel.zip
+  rm edel.zip
 
 fi
 
@@ -71,21 +71,21 @@ fi
  echo "Enter masternode private key"
  read PRIVKEY
  
-  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> altecoin.conf_TEMP
-  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> altecoin.conf_TEMP
-  echo "rpcallowip=127.0.0.1" >> altecoin.conf_TEMP
-  echo "rpcport=$RPCPORT" >> altecoin.conf_TEMP
-  echo "listen=1" >> altecoin.conf_TEMP
-  echo "server=1" >> altecoin.conf_TEMP
-  echo "daemon=1" >> altecoin.conf_TEMP
-  echo "maxconnections=250" >> altecoin.conf_TEMP
-  echo "masternode=1" >> altecoin.conf_TEMP
-  echo "" >> altecoin.conf_TEMP
-  echo "port=$PORT" >> altecoin.conf_TEMP
-  echo "externalip=$IP:$PORT" >> altecoin.conf_TEMP
-  echo "masternodeaddr=$IP:$PORT" >> altecoin.conf_TEMP
-  echo "masternodeprivkey=$PRIVKEY" >> altecoin.conf_TEMP
-  mv altecoin.conf_TEMP altecoin.conf
+  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> edelweis.conf_TEMP
+  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> edelweis.conf_TEMP
+  echo "rpcallowip=127.0.0.1" >> edelweis.conf_TEMP
+  echo "rpcport=$RPCPORT" >> edelweis.conf_TEMP
+  echo "listen=1" >> edelweis.conf_TEMP
+  echo "server=1" >> edelweis.conf_TEMP
+  echo "daemon=1" >> edelweis.conf_TEMP
+  echo "maxconnections=250" >> edelweis.conf_TEMP
+  echo "masternode=1" >> edelweis.conf_TEMP
+  echo "" >> edelweis.conf_TEMP
+  echo "port=$PORT" >> edelweis.conf_TEMP
+  echo "externalip=$IP:$PORT" >> edelweis.conf_TEMP
+  echo "masternodeaddr=$IP:$PORT" >> edelweis.conf_TEMP
+  echo "masternodeprivkey=$PRIVKEY" >> edelweis.conf_TEMP
+  mv edelweis.conf_TEMP edelweis.conf
   cd
   echo ""
   echo -e "Your ip is ${GREEN}$IP:$PORT${NC}"
@@ -95,12 +95,12 @@ fi
   
 echo ""
 echo "Commands:"
-echo -e "Start Altecoin Service: ${GREEN}systemctl start altecoin${NC}"
-echo -e "Check Altecoin Status Service: ${GREEN}systemctl status altecoin${NC}"
-echo -e "Stop Altecoin Service: ${GREEN}systemctl stop altecoin${NC}"
-echo -e "Check Masternode Status: ${GREEN}altecoin-cli getmasternodestatus${NC}"
+echo -e "Start Edelweis Service: ${GREEN}systemctl start edelweis${NC}"
+echo -e "Check Edelweis Status Service: ${GREEN}systemctl status edelweis${NC}"
+echo -e "Stop Edelweis Service: ${GREEN}systemctl stop edelweis${NC}"
+echo -e "Check Masternode Status: ${GREEN}edelweis-cli getmasternodestatus${NC}"
 
 echo ""
-echo -e "${GREEN}Altecoin Masternode Installation Done${NC}"
+echo -e "${GREEN}Edelweis Masternode Installation Done${NC}"
 exec bash
 exit
