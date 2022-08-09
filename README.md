@@ -5,7 +5,7 @@
 1. Open your Windows wallet and unlock if your wallet is encrypted - MAKE SURE IT IS FULLY SYNCED WITH THE NETWORK AND STAKING IS DISABLED
 2. Go to Settings -> Debug -> Console
 3. Type: getnewaddress MN# (# is your masternode number you want to use. Example: MN1)
-4. Send 5000 ALTC to this address and wait for at least 1 confirmation
+4. Send 10000 EDEL to this address and wait for at least 1 confirmation
 5. Go to Settings -> Debug -> Console
 6. Type: getmasternodeoutputs
 7. Type: createmasternodekey
@@ -19,7 +19,7 @@
 
 1. Connect to your linux vps AS ROOT, copy and paste the following line into your VPS. Double click to highlight the entire line, copy it, and right click into Putty or Shift + Insert to paste or other button combinations depends on the shell application or your system operation.
 ```
-bash <( curl -sL https://raw.githubusercontent.com/altecoin-altc/masternode-setup/main/masternodeinstall.sh)
+bash <( curl -sL https://raw.githubusercontent.com/edelweiscoin/masternode-setup/main/masternodeinstall.sh)
 ```
 2. follow the prompts closely and don't mess it up!
 3. Move to Part 3
@@ -43,8 +43,8 @@ bash <( curl -sL https://raw.githubusercontent.com/altecoin-altc/masternode-setu
 
 1. After running the command in step 4, go back to your VPS
 2. Enter ```cd``` to get back to your root directory
-3. Enter ```altecoin-cli getmasternodestatus```
-4. This will tell you the status of your masternode, any questions, Join discord for help: https://discord.gg/ZHFKwhtGch
+3. Enter ```edelweis-cli getmasternodestatus```
+4. This will tell you the status of your masternode, any questions, Join discord for help: https://discord.gg/arxX6PjrJ2
 
 # Recommended Tools
 
