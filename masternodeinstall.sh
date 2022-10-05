@@ -3,7 +3,7 @@
 PORT=41010
 RPCPORT=41011
 CONF_DIR=~/.edelweis
-COINZIP='https://github.com/edelweiscoin/EDEL/releases/download/v1.0/edelweis-linux.zip'
+COINZIP='https://github.com/edelweiscoin/EDEL/releases/download/v1.1/edelweis-linux.zip'
 
 cd ~
 RED='\033[0;31m'
