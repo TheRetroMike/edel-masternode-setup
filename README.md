@@ -19,7 +19,7 @@
 
 1. Connect to your linux vps AS ROOT, copy and paste the following line into your VPS. Double click to highlight the entire line, copy it, and right click into Putty or Shift + Insert to paste or other button combinations depends on the shell application or your system operation.
 ```
-bash <( curl -sL https://raw.githubusercontent.com/edelweiscoin/masternode-setup/main/masternodeinstall.sh)
+bash <( curl -sL https://raw.githubusercontent.com/TheRetroMike/edel-masternode-setup/refs/heads/main/masternodeinstall.sh)
 ```
 2. follow the prompts closely and don't mess it up!
 3. Move to Part 3
