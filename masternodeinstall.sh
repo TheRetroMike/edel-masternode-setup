@@ -24,8 +24,8 @@ After=network.target
 User=root
 Group=root
 Type=forking
-ExecStart=/usr/local/bin/edelweisd
-ExecStop=-/usr/local/bin/edelweis-cli stop
+ExecStart=/usr/local/bin/edelweisd -datadir=/data/edel
+ExecStop=-/usr/local/bin/edelweis-cli -datadir=/data/edel stop
 Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
